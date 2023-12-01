@@ -11,9 +11,6 @@
                     font: inherit;
                     vertical-align: baseline;
                 }
-                a {
-                    text-decoration: none;
-                }
                 /* Actual Styles */
                 main {
                     display: flex;
@@ -147,30 +144,28 @@
                     }
                 }
             </style>
-            <a href="https://github.com/tthn0/Spotify-Readme" target="_blank">
-                <main>
-                    {% if scan_code %}
-                        <img class="scan-code" src="data:image/png;base64, {{scan_code}}" alt="Scan Code" />
-                    {% endif %}
-                    <aside>
-                        <img class="cover" src="data:image/png;base64, {{image}}" alt="Cover Image" />
-                        <section>
-                            <div class="info">
-                                <div class="top">
-                                    {% if not scan_code %}
-                                        <img class="logo" src="data:image/png;base64, {{logo}}" alt="Spotify Logo" />
-                                    {% endif %}
-                                    <h1>{{song}}</h1>
-                                </div>
-                                <p>{{artist}}</p>
+            <main>
+                {% if scan_code %}
+                    <img class="scan-code" src="data:image/png;base64, {{scan_code}}" alt="Scan Code" />
+                {% endif %}
+                <aside>
+                    <img class="cover" src="data:image/png;base64, {{image}}" alt="Cover Image" />
+                    <section>
+                        <div class="info">
+                            <div class="top">
+                                {% if not scan_code %}
+                                    <img class="logo" src="data:image/png;base64, {{logo}}" alt="Spotify Logo" />
+                                {% endif %}
+                                <h1>{{song}}</h1>
                             </div>
-                            <div class="bar-container">
-                                {{bars|safe}}
-                            </div>
-                        </section>
-                    </aside>
-                </main>
-            </a>
+                            <p>{{artist}}</p>
+                        </div>
+                        <div class="bar-container">
+                            {{bars|safe}}
+                        </div>
+                    </section>
+                </aside>
+            </main>
         </div>
     </foreignObject>
 </svg>
