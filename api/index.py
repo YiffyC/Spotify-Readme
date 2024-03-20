@@ -63,6 +63,7 @@ def generate_bars(bar_count, rainbow):
     if rainbow and rainbow != "false" and rainbow != "0":
         css += ".bar-container { animation-duration: 2s; }"
     spectrum = [
+<<<<<<< HEAD
         "#ffffff", "#f4f3f5", "#eae8eb", "#dfdce1", "#d5d2d7", "#cac6cd",
         "#c0bcc3", "#b5b0ba", "#aba6b0", "#a09ca7", "#96929d", "#8b8793",
         "#817d89", "#76737f", "#6c6976", "#61606c", "#575763", "#4c4a59",
@@ -72,6 +73,29 @@ def generate_bars(bar_count, rainbow):
         "#6c6976", "#76737f", "#817d89", "#8b8793", "#96929d", "#a09ca7",
         "#aba6b0", "#b5b0ba", "#c0bcc3", "#cac6cd", "#d5d2d7", "#dfdce1",
         "#eae8eb", "#f4f3f5", "#ffffff"
+=======
+        "#ff0000",
+        "#ff4000",
+        "#ff8000",
+        "#ffbf00",
+        "#ffff00",
+        "#bfff00",
+        "#80ff00",
+        "#40ff00",
+        "#00ff00",
+        "#00ff40",
+        "#00ff80",
+        "#00ffbf",
+        "#00ffff",
+        "#00bfff",
+        "#0080ff",
+        "#0040ff",
+        "#0000ff",
+        "#4000ff",
+        "#8000ff",
+        "#bf00ff",
+        "#ff00ff",
+>>>>>>> parent of a4b23b5 (Update index.py)
     ]
     for i in range(bar_count):
         css += f""".bar:nth-child({i + 1}) {{
