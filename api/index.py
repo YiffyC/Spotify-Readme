@@ -1,9 +1,9 @@
 import requests
 from base64 import b64encode
 from dotenv import find_dotenv, load_dotenv
-from flask import Flask, Response, render_template, request
-from os import getenv
-from random import randint
+from flask import Flask, Response, jsonify, request
+import threading
+import time
 
 # Load environment variables
 load_dotenv(find_dotenv())
@@ -16,6 +16,19 @@ with open("api/base64/placeholder_image.txt") as f:
 with open("api/base64/spotify_logo.txt") as f:
     B64_SPOTIFY_LOGO = f.read()
 
+# Function to periodically update the currently playing track
+def update_current_track():
+    while True:
+        # Make a request to the Spotify API to get the currently playing track
+        # Update the currently playing track information
+        
+        # For demonstration purposes, I'll just sleep for 10 seconds
+        time.sleep(10)
+
+# Start a new thread to run the update_current_track function
+update_thread = threading.Thread(target=update_current_track)
+update_thread.daemon = True
+update_thread.start()
 
 def get_token():
     """Get a new access token"""
@@ -50,16 +63,16 @@ def generate_bars(bar_count, rainbow):
     if rainbow and rainbow != "false" and rainbow != "0":
         css += ".bar-container { animation-duration: 2s; }"
     spectrum = [
-    "#ffffff", "#f4f3f5", "#eae8eb", "#dfdce1", "#d5d2d7", "#cac6cd",
-    "#c0bcc3", "#b5b0ba", "#aba6b0", "#a09ca7", "#96929d", "#8b8793",
-    "#817d89", "#76737f", "#6c6976", "#61606c", "#575763", "#4c4a59",
-    "#42404f", "#373648", "#2d2b3e", "#232235", "#18162b", "#0e0c21",
-    "#030216", "#000000", "#030216", "#0e0c21", "#18162b", "#232235",
-    "#2d2b3e", "#373648", "#42404f", "#4c4a59", "#575763", "#61606c",
-    "#6c6976", "#76737f", "#817d89", "#8b8793", "#96929d", "#a09ca7",
-    "#aba6b0", "#b5b0ba", "#c0bcc3", "#cac6cd", "#d5d2d7", "#dfdce1",
-    "#eae8eb", "#f4f3f5", "#ffffff"
-]
+        "#ffffff", "#f4f3f5", "#eae8eb", "#dfdce1", "#d5d2d7", "#cac6cd",
+        "#c0bcc3", "#b5b0ba", "#aba6b0", "#a09ca7", "#96929d", "#8b8793",
+        "#817d89", "#76737f", "#6c6976", "#61606c", "#575763", "#4c4a59",
+        "#42404f", "#373648", "#2d2b3e", "#232235", "#18162b", "#0e0c21",
+        "#030216", "#000000", "#030216", "#0e0c21", "#18162b", "#232235",
+        "#2d2b3e", "#373648", "#42404f", "#4c4a59", "#575763", "#61606c",
+        "#6c6976", "#76737f", "#817d89", "#8b8793", "#96929d", "#a09ca7",
+        "#aba6b0", "#b5b0ba", "#c0bcc3", "#cac6cd", "#d5d2d7", "#dfdce1",
+        "#eae8eb", "#f4f3f5", "#ffffff"
+    ]
     for i in range(bar_count):
         css += f""".bar:nth-child({i + 1}) {{
                 animation-duration: {randint(500, 750)}ms;
